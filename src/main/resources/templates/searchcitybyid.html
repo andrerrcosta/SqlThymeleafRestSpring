@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="actions-menu">
+        <form action="/actions/read-csv" method="POST">
+          <button class="menu-item" type="submit">Ler Arquivo</button>
+        </form>
+
+        <form action="/capitals" method="GET">
+          <button class="menu-item" type="submit">Retornar Capitais</button>
+        </form>
+
+        <form action="/states-more-less-cities" method="GET">
+          <button class="menu-item" type="submit">
+            Estados com +/- cidades
+          </button>
+        </form>
+
+        <form action="/search-cities-by-state" method="GET">
+          <button class="menu-item" type="submit">
+            Pesquisar cidades por estado
+          </button>
+        </form>
+
+        <form action="/search-city-by-id" method="GET">
+          <button class="menu-item" type="submit">Pesquisar por Ibge Id</button>
+        </form>
+
+        <form action="/quantity-cities-per-state" method="GET">
+          <button class="menu-item" type="submit">
+            Quantidade de cidades por estado
+          </button>
+        </form>
+
+        <form action="/add-city" method="GET">
+          <button class="menu-item" type="submit">Cadastrar Cidade</button>
+        </form>
+
+        <form action="/delete-city" method="GET">
+          <button class="menu-item" type="submit">Deletar Cidades</button>
+        </form>
+
+        <form action="/filter-by-column" method="GET">
+          <button class="menu-item" type="submit">Filtrar por coluna</button>
+        </form>
+
+        <form action="/get-records-by-column" method="GET">
+          <button class="menu-item" type="submit">
+            Retornar registros por coluna
+          </button>
+        </form>
+
+        <form action="/get-total-of-records" method="GET">
+          <button class="menu-item" type="submit">Total de registros</button>
+        </form>
+
+        <form action="/most-distant-cities" method="GET">
+          <button class="menu-item" type="submit">
+            Cidades mais distantes
+          </button>
+        </form>
+      </div>
+
+      <div class="actions-content" style="display: unset">
+        <form
+          class="form-box"
+          th:action="@{/search-city-by-id}"
+          method="GET"
+        >
+          <b> Digite o id da cidade </b>
+
+          <input
+            type="text"
+            placeholder="IBGE ID"
+            th:value="${ibgeId}"
+            name="ibgeId"
+          />
+
+          <button type="submit">Search</button>
+        </form>
+
+        <h3>Cidades</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>IbgeId</th>
+              <th>Uf</th>
+              <th>NoAccents</th>
+              <th>Name</th>
+              <th>Capital</th>
+              <th>Alt Names</th>
+              <th>microregion</th>
+              <th>mesoregion</th>
+              <th>Lat</th>
+              <th>Lon</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td th:text="${cidade?.ibgeId}"></td>
+              <td th:text="${cidade?.uf}"></td>
+              <td th:text="${cidade?.noAccents}"></td>
+              <td th:text="${cidade?.name}"></td>
+              <td th:text="${cidade?.capital}"></td>
+              <td th:text="${cidade?.altNames}"></td>
+              <td th:text="${cidade?.microregion}"></td>
+              <td th:text="${cidade?.mesoregion}"></td>
+              <td th:text="${cidade?.latitude}"></td>
+              <td th:text="${cidade?.longitude}"></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+    </div>
+  </body>
+</html>
