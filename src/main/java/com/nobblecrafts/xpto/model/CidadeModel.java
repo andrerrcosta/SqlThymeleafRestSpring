@@ -1,5 +1,7 @@
 package com.nobblecrafts.xpto.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -18,7 +20,7 @@ import lombok.With;
 @NoArgsConstructor
 @AllArgsConstructor
 @With
-public class CidadeModel {
+public class CidadeModel implements Serializable {
 
   @Id
   // @GeneratedValue(strategy=GenerationType.TABLE)
